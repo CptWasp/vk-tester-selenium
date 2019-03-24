@@ -23,6 +23,7 @@ public class frameApp {
         frameApp(){
             GridLayout glayout = new GridLayout(5, 2);
             panel.setLayout(glayout);
+            panel.setBackground(Color.DARK_GRAY);
             panel.add(logText);
             panel.add(login);
 

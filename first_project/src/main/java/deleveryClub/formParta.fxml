@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TextField id="login" alignment="CENTER" promptText="Логин">
+            <VBox.margin>
+                <Insets top="60.0" />
+            </VBox.margin>
+        </TextField>
+        <PasswordField id="password" alignment="CENTER" promptText="Пароль">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </PasswordField>
+        <TextField id="userid" alignment="CENTER" prefHeight="0.0" prefWidth="503.0" promptText="user id">
+            <VBox.margin>
+                <Insets top="40.0" />
+            </VBox.margin>
+        </TextField>
+        <ChoiceBox id="message" prefHeight="25.0" prefWidth="339.0">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </ChoiceBox>
+        <Button id="sendbutton" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Отправить">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </Button>
+    </children>
+</VBox>
