@@ -14,15 +14,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FXMLController implements Initializable {
+    
+    
     public ChromeDriver driver;
+    
     @FXML
-    static String uname = "";
 //    MainApp parent;
 //    FXMLController(MainApp parent){
 //        this.parent = parent;
@@ -39,28 +44,21 @@ public class FXMLController implements Initializable {
         // TODO
     } 
     
+    @Before
+    public void setUp(){
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        driver = new ChromeDriver(options); // (options)
+    }
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException{
-
+    @Test
+    public void testing(){
         String login = textField0.getText();
         String password = textField1.getText();
         String user = textField2.getText();
         String message = textField3.getText();
         
-        
-        
-//        Тестинг
-        
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-    
-
-        driver = new ChromeDriver(options); // (options)
-        // открытие сайта
-
-
         driver.get("https://vk.com");
         // меняем значение input
         WebElement mailField = driver.findElement(By.id("index_email"));
@@ -73,7 +71,6 @@ public class FXMLController implements Initializable {
         passField.sendKeys(password);
         // нажимаем на кнопку
         driver.findElement(By.id("index_login_button")).click();
-
 
         driver.get("https://vk.com/dev/messages.send");
         //id 144970652  audiomsgpl_144970652_493819179
@@ -93,17 +90,21 @@ public class FXMLController implements Initializable {
         //attachField.sendKeys("doc144970652_493819179"); // document
         attachField.sendKeys(message);
         driver.findElement(By.id("dev_req_run_btn")).click();
+    }
+    
+    @After
+    public void driverOut(){
         driver.quit();
-        
-        
-        
-        
-        
-        
-        
-        
-//        System.out.println(login+", "+password+", "+user+", "+message );
-        
+             
+    }  
+    
+    
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException{
+
+        setUp();
+        testing();
+        driverOut();     
     }
     
       
